@@ -1,15 +1,15 @@
-(function (suppliez, $, ko) {
+(function (kan, $, ko) {
 
-    suppliez.ViewModels = suppliez.ViewModels || {};
+    kan.ViewModels = kan.ViewModels || {};
     //登录页面viewmodel
-    suppliez.ViewModels.LoginViewModel = function () {
+    kan.ViewModels.LoginViewModel = function () {
         var self = this;
         self.userName = ko.observable("");
         self.password = ko.observable("");
         self.message = ko.observable("");
         self.errorCode = ko.observable("");
 
-        var uid = suppliez.util.getUrlParam(window.location.href, "uid");
+        var uid = kan.util.getUrlParam(window.location.href, "uid");
         self.uid = uid && uid.trim();
         if (self.uid) {
             self.userName(self.uid);
@@ -50,20 +50,22 @@
             var loader = $.mobile.loading();
             loader.show();
             var hasError = false;
-            var userNameType = suppliez.config.userNameType || 1;
+            var userNameType = kan.config.userNameType || 1;
             if (userNameType === 2) {
                 userName = userName.toLowerCase();
             } else if (userNameType === 3) {
                 userName = userName.toUpperCase();
             }
-            suppliez.service.login(userName, password)
+            kan.service.login(userName, password)
                 .then(function (data) {
-                    var token = suppliez.util.getAuthToken(userName, password);
+                    var token = kan.util.getAuthToken(userName, password);
                     sessionStorage.setItem("bpms_token", token);
-                    return suppliez.util.request("runtime/tasks");
+                    loader.hide();
+                    var target = kan.util.getUrlParam(window.location.href, "target") || "kan_detail.html";
+                    window.location.replace(target);
                 }, function (err) {
                     sessionStorage.removeItem("bpms_token");
-                    var message = suppliez.service.loginError ? "您输入的登陆信息不正确" : "网络异常";
+                    var message = kan.service.loginError ? "您输入的登陆信息不正确" : "网络异常";
                     self.message(message);
                     if (err && err.status && err.statusText) {
                         self.errorCode("错误代码：" + err.status + " " + err.statusText);
@@ -72,25 +74,12 @@
                     hasError = true;
                     loader.hide();
 
-                })
-                .then(function (data) {
-                    loader.hide();
-                    var target = suppliez.util.getUrlParam(window.location.href, "target") || "index.html";
-                    window.location.replace(target);
-                }, function () {
-                    loader.hide();
-                    if (hasError) {
-                        return;
-                    }
-                    sessionStorage.removeItem("bpms_token");
-                    self.message("获取任务失败");
-                    $("#popupMessage").popup("open");
                 });
         };
 
         self.startWechatLogin = function () {
             var url = "login_bridge.html";
-            var target = suppliez.util.getUrlParam(window.location.href, "target");
+            var target = kan.util.getUrlParam(window.location.href, "target");
             if (target) {
                 url += "?target=" + target;
             }
@@ -98,4 +87,4 @@
         };
     };
 
-})(window.suppliez = window.suppliez || {}, jQuery, ko);
+})(window.kan = window.kan || {}, jQuery, ko);

@@ -1,5 +1,5 @@
-(function (suppliez) {
-    suppliez.util = {
+(function (kan) {
+    kan.util = {
         getAuthToken: function (username, password) {
             base64Encode = function (str) {
                 var c1, c2, c3;
@@ -50,7 +50,7 @@
                 //}
             };
             $.extend(defaultSettings, settings);
-            var serviceUrl = suppliez.config.serviceUrl;
+            var serviceUrl = kan.config.serviceUrl;
             var token = (settings && settings.token);
             if (!token)
                 token = sessionStorage.getItem("bpms_token");
@@ -59,7 +59,7 @@
             if (url.indexOf("http") < 0)
                 url = serviceUrl + url;
 
-            var httpsServers = suppliez.config.httpsServers || [];
+            var httpsServers = kan.config.httpsServers || [];
             var useHttps = false;
             for (var i in httpsServers) {
                 if (url.toLowerCase().indexOf(httpsServers[i]) > 0) {
@@ -289,4 +289,4 @@
         }
 
     };
-})(window.suppliez = window.suppliez || {});
+})(window.kan = window.kan || {});

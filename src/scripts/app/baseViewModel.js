@@ -1,12 +1,12 @@
-(function (suppliez) {
+(function (kan) {
     Function.prototype.extend = function (Base) {
         this.prototype = new Base();
         this.prototype.constructor = Base;
     };
-    suppliez.ViewModels = suppliez.ViewModels || {};
-    suppliez.ViewModels.BaseViewModel = function () {
+    kan.ViewModels = kan.ViewModels || {};
+    kan.ViewModels.BaseViewModel = function () {
         var loader = $.mobile.loading();
-        this.user = suppliez.util.getUser();
+        this.user = kan.util.getUser();
         this.popupInfo = {
             title: ko.observable(""),
             subTitle: ko.observable(""),
@@ -65,15 +65,6 @@
             location.href = url;
         };
 
-        // var user = sessionStorage.getItem("srm_user");
-        // if (!user) {
-        //     var isInWeChat = suppliez.util.isWeChat();
-        //     var url = isInWeChat ? "login_bridge.html" : "login.html";
-        //     url += "?target=" + encodeURIComponent(location.href);
-        //     window.location.href = url;
-        //     return;
-        // }
-
-        // this.user = JSON.parse(user);
+  
     };
-})(window.suppliez = window.suppliez || {});
+})(window.kan = window.kan || {});

@@ -1,0 +1,243 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, target-densitydpi=device-dpi">
+<title>bpms-inkan</title>
+<link rel="stylesheet" type="text/css" href="themes/jquery.mobile.css" />
+<link rel="stylesheet" type="text/css" href="themes/color.css" />
+<link rel="stylesheet" type="text/css" href="themes/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="themes/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="themes/owl.theme.css">
+<link rel="stylesheet" type="text/css" href="themes/owl.transitions.css">
+<link rel="stylesheet" type="text/css" href="themes/bootstrap-theme.css">
+<link rel="stylesheet" type="text/css" href="themes/jqm-demos.css">
+<link rel="stylesheet" type="text/css" href="themes/jquery.mobile.icons.css">
+<link rel="stylesheet" type="text/css" href="themes/jquery.mobile.structure.css">
+<link rel="stylesheet" type="text/css" href="themes/all.min.css">
+<link rel="stylesheet" type="text/css" href="themes/google-icon.css">
+<link rel="stylesheet" type="text/css" href="themes/site.css" />
+<script src="scripts/libs/jquery.js"></script>
+<script src="scripts/libs/jquery.form.js"></script>
+<script src="scripts/libs/knockout.jquery.mobile.js"></script>
+<script src="scripts/libs/jquery.mobile.js"></script>
+<script src="scripts/libs/bootstrap.js"></script>
+<script src="scripts/libs/knockout.js"></script>
+<script src="scripts/libs/koExternalTemplateEngine_all.js"></script>
+<script src="scripts/libs/ko.extension.js"></script>
+<script src="scripts/libs/jquery.sparkline.js"></script>
+<script src="scripts/libs/bootstrap-collapse.js"></script>
+<script src="scripts/libs/bootstrap-transition.js"></script>
+<script src="scripts/libs/bootstrap-tab.js"></script>
+<script src="scripts/libs/prettify.js"></script>
+<script src="scripts/libs/application.js"></script>
+<script src="scripts/libs/moment/moment.js"></script>
+<script src="scripts/libs/moment/locale/zh-cn.js"></script>
+<script src="scripts/libs/bootstrap-datetimepicker.js"></script>
+<script src="scripts/libs/jquery.qrcode.js"></script>
+<script src="scripts/libs/qrcode.min.js"></script>
+<script src="scripts/libs/jsbarcode.all.min.js"></script>
+<script src="scripts/libs/oex/utils.js"></script>
+<script src="scripts/libs/oex/jqm-checked.js"></script>
+<script src="scripts/libs/oex/jqm-datetime.js"></script>
+<script src="scripts/libs/oex/jqm-selected.js"></script>
+<script src="scripts/libs/oex/jqm-number.js"></script>
+<script src="scripts/libs/oex/jqm-money.js"></script>
+<script src="scripts/libs/oex/jqm-tel.js"></script>
+<script src="scripts/libs/oex/jqm-email.js"></script>
+<script src="scripts/libs/oex/jqm-switch.js"></script>
+<script src="scripts/libs/oex/jqm-auto.js"></script>
+<script src="scripts/libs/oex/jqm-id.js"></script>
+<script src="scripts/libs/oex/jqm-upload.js"></script>
+<script src="scripts/libs/oex/jqm-ctr.js"></script>
+<script src="scripts/app/config.js"></script>
+<script src="scripts/app/util.js"></script>
+<script src="scripts/app/service.js"></script>
+<script src="scripts/app/baseViewModel.js"></script>
+<script src="scripts/app/pages/kanDetailViewModel.js"></script>
+<script src="scripts/app/pages/kanDetail.js"></script>
+<link rel="shortcut icon" href="favicon.ico">
+<style>
+@media screen and (min-width:0px) {
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+}
+}
+
+@media screen and (min-width:667px) {
+.row {
+	margin-left: 16px;
+	margin-right: 16px;
+	margin-top: 32px;
+}
+}
+
+@media screen and (min-width:992px) {
+.row {
+	margin-left: 16px;
+	margin-right: 16px;
+	margin-top: 32px;
+}
+}
+ @media screen and (min-width:1200px) {
+.row {
+	margin-left: 64px;
+	margin-right: 64px;
+	margin-top: 32px;
+}
+ }
+ @media screen and (min-width:1600px) {
+.row {
+ margin-left: 72px;
+ margin-right: 72px;
+ margin-top: 32px;
+}
+ }
+ @media screen and (min-width:1900px) {
+.row {
+ margin-left: 600px;
+ margin-right: 600px;
+ margin-top: 32px;
+}
+}
+</style>
+</head>
+<body>
+<div data-role="page" id="appshome" data-theme="c" style="background-color: #ffffff; bottom:0px; text-shadow: 0 0 0;">
+  <div data-role="header" data-theme="b" data-position="fixed" style="background-color:#ffffff; border-top-width: 0px; border-bottom-width:1px;">
+    <div class="ui-grid-a">
+      <div class="ui-block-a">
+        <h3 style="margin-left: 10px; margin-top:12px; margin-bottom:8px;"><a href="#panelgrid" style="color:#2196f3"><i class="fal fa-bars"></i><img src="images/bpmslogonew2.svg" height="24px" style="margin-left: 12px; margin-bottom:4px"></a></h3>
+      </div>
+      <div class="ui-block-b">
+        <h3 style="margin-left: 10px; margin-right: 10px; margin-top: 8px; margin-bottom:4px; text-shadow: 0 0px; color:rgba(15,15,15,1.00); text-align:right"><span style="margin: 0px 0px; padding: 0px 0px;">
+          <svg id="userBarcode" width="88px" height="34px"></svg>
+          </span></h3>
+     
+      </div>
+    </div>
+    <!-- /grid-a --> 
+  </div>
+  <div data-role="content" style="padding: 2px 2px;">
+    <div class="row" style="margin-top: 0px;">
+      <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="padding: 0px 0px;" draggable="true">
+        <div class="jqm-block-content ui-responsive" style="margin: 2px 2px; padding: 8px 10px; border-color:#ffffff; text-shadow:none; font-weight:200;">
+          <div class="row" style="margin: 0px 0px; padding: 0px 0px"> 
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="padding: 3px 3px;">
+              <p align="left"><font color="#333333" size="-1">PO<br>
+                </font><font size="+2" data-bind="text:item.ponumber"></font></p>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6" style="padding: 3px 3px;">
+              <p align="left"><font color="#333333" size="-1">Material</font><br>
+                <font size="+1" data-bind="text:item.product_2"></font></p>
+            </div>
+          </div>
+          <div class="row" style="margin: 0px 0px; padding: 0px 0px">
+            <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6" style="padding: 3px 3px;">
+              <p align="left" style="margin-top: 12px"><font color="#333333" size="-1">Task</font><br>
+                <font size="+1" data-bind="text:item.instance_bskey"></font></p>
+            </div>
+            <div class="col-sm-6 col-xs-12 col-md-6 col-lg-6" style="padding: 3px 3px;">
+              <p align="left" style="margin-top: 12px; margin-bottom: 0px;"><font color="#333333" size="-1">Qty</font></p>
+              <p align="left" style="font-weight:600; color:#bdbdbd; margin-bottom: 6px; margin-top: 3px">
+                <font size="+2"><i class="fal fa-fw fa-tasks"></i></font><font size="+2" color="#333333">&nbsp;<span data-bind="text:item.plannedqty"></span></font>&nbsp;&nbsp;&nbsp;&nbsp;<font size="+2" color="#D4D4D4">|</font>&nbsp;&nbsp;&nbsp;&nbsp;
+                <font size="+2"><i class="fal fa-fw fa-check" style="color: #4caf50"></i></font><font size="+2" color="#333333">&nbsp;<span data-bind="text:item.totaloffline"></span></font>&nbsp;&nbsp;&nbsp;&nbsp;<font size="+2" color="#D4D4D4">|</font>&nbsp;&nbsp;&nbsp;&nbsp;<font size="+2"><i class="fal fa-fw fa-exclamation-triangle" style="color: #f44336"></i></font>
+                <font size="+2" color="#333333">&nbsp;<span data-bind="text:item.totalng"></span></font></p>
+            </div>
+          </div>
+			
+          <div class="row" style="margin: 0px 0px; padding: 0px 0px; margin-top: 16px">
+			  <legend style="margin-top: 0px; margin-bottom: 3px;"></legend>
+            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6" style="padding: 3px 3px;">
+              <p align="left" style="font-weight:300; font-size: 64px; color:#4caf50; margin-bottom: 0px; margin-top: 6px"><font><i class="far fa-fw fa-play"></i></font><font color="#333333">&nbsp;<b data-bind="text:item.corevalue_t01"></b></font></p>
+            </div>
+            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6" style="padding: 3px 3px;">
+              <p align="left" style="font-weight:300; color:#bdbdbd; margin-bottom: 0px; margin-top:11px"> <font color="#333333" size="-1">Due Time</font><br>
+                <font size="+1"><i class="fal fa-fw fa-clock"></i></font><font size="+1" color="#333333">&nbsp;<span data-bind="text:formatDate(item.DUE_DATE_())"></span></font></p>
+              <p align="left" style="font-weight:300; color:#bdbdbd; margin-bottom: 6px; margin-top: 0px"><font size="+1"><i class="fal fa-fw fa-hourglass-half"></i></font><font size="+1" color="#333333">&nbsp;<span data-bind="style:{color:getDuration(item.DUE_DATE_())>0?'#333333':'#f44336' },text:formatDuration(item.DUE_DATE_())"></span></font></p>
+            </div>
+          </div>
+          <div class="row" style="margin: 0px 0px; margin-top: 10px;">
+			 <legend></legend>
+            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6" style="padding: 3px 3px;">
+              <p align="left" style="margin-top: 0px; margin-bottom: 8px;"><font color="#333333" size="-1">BPMS QRCODE</font></p>
+              <div id="qrcode" style="margin:auto; text-align: left;height:120px;" data-bind="style:{visibility:!!item.PROC_INST_ID_() ?'visible':'hidden' }"></div>
+            </div>
+            <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6" style="padding: 3px 3px;">
+              <p align="left" style="margin-top: 0px; margin-bottom: 0px;"><font color="#333333" size="-1">From</font><br>
+				<font size="+2" style="font-weight: 500"  data-bind="text:item.from"></font></p>
+			<p align="left" style="margin-top: 12px; margin-bottom: 0px;"><font color="#333333" size="-1">To</font><br>
+				 <font size="+2" style="font-weight: 500"  data-bind="text:item.to"></font></p>
+				
+             
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- /content -->
+    <div data-role="panel" id="panelgrid" data-position="left" data-display="overlay">
+      <div class="jqm-block-content" style="margin: -14px -14px; margin-bottom: 0px; padding: 9px 9px; padding-top: 30px; background-color: #00897b; border:none; min-height: 0px; border-radius: 0em;">
+        <p align="center" style="margin-bottom:6px; text-shadow:1px 1px 3px rgba(74,74,74,0.58)"><i class="material-icons md-56 md-light">account_circle</i></p>
+        <div class="ui-grid-a">
+          <div class="ui-block-a">
+            <p align="left"  style="padding-top:6px; padding-left:6px;"><font color="#ffffff" data-bind="text:user.name"></font></p>
+          </div>
+          <div class="ui-block-b">
+            <p align="right"  data-bind="click:logout" style="padding-right:0px; margin-top:1px; text-shadow: 1px 1px 1px rgba(74,74,74,0.5)"><font size="+3" color="#ffffff"><i class="fal fa-sign-out"></i></font></p>
+          </div>
+        </div>
+      </div>
+      <ul data-role="listview" data-theme="b"  class="ui-nodisc-icon ui-alt-icon" style="margin-top:0px;">
+        <li data-icon="grid"><a rel="external" href="index_detail.html"
+                           style="background-color:transparent; border-top-width:0px;">工作台</a></li>
+        <li data-role="collapsible" data-iconpos="right" data-inset="false" style="padding:0px 0px; border-width:0px; background-color:rgba(0,0,0,1.00);"  data-collapsed-icon="bars" data-expanded-icon="minus">
+          <h2 style="padding:0px 0px; margin:0px 0px;">我的应用</h2>
+          <ul data-role="listview" data-theme="a" style="padding:0px 0px; margin:0px 0px; border-bottom-width:0px;">
+            <li><a rel="external" href="kan_detail.html" style="font-weight:200; background-color:transparent"><img src="images/pickup.png" alt="" class="ui-li-icon ui-corner-none" style="top: 11px;">电脑端</a></li>
+            <li><a rel="external" href="kan_small_detail.html" style="font-weight:200; background-color:transparent"><img src="images/pickup.png" alt="" class="ui-li-icon ui-corner-none" style="top: 11px;">手机端</a></li>
+          </ul>
+        </li>
+        <li data-icon="gear"><a rel="external" href="#" style="background-color:transparent; border-top-width:0px;">设置</a></li>
+      </ul>
+    </div>
+  </div>
+  <div data-role="popup" id="popupError"  data-theme="b" data-overlay-theme="a" class="ui-corner-all" style="min-width:300px; max-width:300px; background-image: url(images/content-bg.jpg)">
+    <div class="row" style="margin:0px 0px; padding:0px 0px">
+      <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9" style="padding:0px 0px">
+        <p align="left" style=" margin:6px 6px; font-weight:300"> <strong><font size="+1" color="#e91e63" data-bind="text:popupInfo.title,visible:popupInfo.title"></font> </strong><br>
+          <font color="#9E9E9E" data-bind="text:popupInfo.subTitle,visible:popupInfo.subTitle"></font></p>
+      </div>
+      <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3" style="padding:0px 0px">
+        <p align="right" style=" margin:6px 6px"><font color="#e91e63"><i class="fa fa-3x fa-ban"></i></font></p>
+      </div>
+    </div>
+    <legend style="margin-bottom:0px;"></legend>
+    <p align="left" style="margin:6px 6px; margin-bottom:3px; margin-top:8px; font-weight:200"><font size="+1" data-bind="text:popupInfo.message,visible:popupInfo.message"></font></p>
+    <p data-bind="visible:popupInfo.code" style="margin:6px 6px; margin-top:3px; margin-bottom:32px; font-weight:200"><font size="-1">code: <b data-bind="text:popupInfo.code"></b></font></p>
+    <p style="padding: 2px 2px; margin:2px 2px"><a href="#" data-rel="back" class="ui-btn ui-corner-all " style="margin:0px 0px; background-color:#e91e63; font-weight:300; min-width:120px; color:#ffffff; text-shadow: 0 1px 0 #111;"><i class="fa fa-fw fa-check"></i> 确定</a></p>
+  </div>
+  <div data-role="popup" id="popupSuccess" data-theme="b" data-overlay-theme="a" class="ui-corner-all" style="min-width:300px; max-width:300px; background-image: url(images/content-bg.jpg)">
+    <div class="row" style="margin:0px 0px; padding:0px 0px">
+      <div class="col-lg-9 col-sm-9 col-xs-9 col-md-9" style="padding:0px 0px">
+        <p align="left" style=" margin:6px 6px; font-weight:300"> <strong><font size="+1" color="#009688" data-bind="text:popupInfo.title,visible:popupInfo.title"></font> </strong><br>
+          <font color="#9E9E9E" data-bind="text:popupInfo.subTitle,visible:popupInfo.subTitle"></font></p>
+      </div>
+      <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3" style="padding:0px 0px">
+        <p align="right" style=" margin:6px 6px"><font color="#009688"><i class="fa fa-3x fa-check-circle-o"></i></font></p>
+      </div>
+    </div>
+    <legend style="margin-bottom:0px;"></legend>
+    <p align="left" style="margin:6px 6px; margin-bottom:3px; margin-top:8px; font-weight:200"><font size="+1" data-bind="text:popupInfo.message,visible:popupInfo.message"></font></p>
+    <p data-bind="visible:popupInfo.code"  style="margin:6px 6px; margin-top:3px; margin-bottom:32px; font-weight:200"><font size="-1">code: <b data-bind="text:popupInfo.code"></b></font></p>
+    <p style="padding: 2px 2px; margin:2px 2px"><a href="#" data-rel="back" class="ui-btn ui-corner-all " style="margin:0px 0px; background-color:#009688; font-weight:300; min-width:120px; color:#ffffff; text-shadow: 0 1px 0 #111;"><i class="fa fa-fw fa-check"></i> 确定</a></p>
+  </div>
+</div>
+<!-- /page -->
+
+</body>
+</html>

@@ -1,9 +1,9 @@
-(function (suppliez) {
+(function (kan) {
 
-    suppliez.service = {
+    kan.service = {
         login: function (userName, password) {
             var getUserInfo = function (accessToken) {
-                var url = suppliez.config.oAuth2Url + "userinfo";
+                var url = kan.config.oAuth2Url + "userinfo";
                 var settings = {
                     dataType: "json",
                     url: url,
@@ -22,8 +22,8 @@
                 return $.ajax(settings);
             };
             var requestOAuth2 = function (userName, password) {
-                var token = suppliez.util.getAuthToken(suppliez.config.oAuth2Keys[0], suppliez.config.oAuth2Keys[1]);
-                var url = suppliez.config.oAuth2Url + "token";
+                var token = kan.util.getAuthToken(kan.config.oAuth2Keys[0], kan.config.oAuth2Keys[1]);
+                var url = kan.config.oAuth2Url + "token";
                 var settings = {
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
@@ -46,7 +46,7 @@
 
                 return $.ajax(settings);
             };
-            suppliez.service.loginError = false;
+            kan.service.loginError = false;
             sessionStorage.removeItem("Bearer");
             sessionStorage.removeItem("bpms_user");
             return requestOAuth2(userName, password).then(
@@ -60,14 +60,14 @@
                     if (response && response.responseText &&
                         (response.responseText.indexOf("Authentication failed") >= 0 ||
                             response.responseText.indexOf("Missing parameters") >= 0)) {
-                        suppliez.service.loginError = true;
+                        kan.service.loginError = true;
                     }
                     sessionStorage.removeItem("Bearer");
                     sessionStorage.removeItem("bpms_user");
                 }
             ).then(function (user) {
                 user.lastLogin = +moment();
-                var userNameType = suppliez.config.userNameType || 1;
+                var userNameType = kan.config.userNameType || 1;
                 if (userNameType === 2) {
                     userName = userName.toLowerCase();
                 } else if (userNameType === 3) {
@@ -82,29 +82,30 @@
                 }
                 sessionStorage.setItem("bpms_user", JSON.stringify(user));
 
-                var token = suppliez.util.getAuthToken(userName, password);
-                return suppliez.util.request("history/historic-activity-instances", {}, {
-                    "token": token
-                });
+                // var token = kan.util.getAuthToken(userName, password);
+                // return kan.util.request("history/historic-activity-instances", {}, {
+                //     "token": token
+                // });
+                var dfd = $.Deferred();
+                dfd.resolve();
+                return dfd.promise();
             });
 
         },
-        getMetabaseData: function (url, criteria) {
-            var filters = [];
-            for (var i in criteria) {
-                filters.push({ "type": "category", "target": ["variable", ["template-tag", i]], "value": criteria[i] });
-            }
+        getMetabaseData: function (userId) {
+            var filters = [{ "type": "category", "target": ["variable", ["template-tag", "param"]], "value": userId }];
+
             var param = { parameters: JSON.stringify(filters) }
             var settings = {
                 type: "GET",
                 data: {},
                 dataType: "json",
-                url: url + "?" + $.param(param)
+                url: kan.config.detailUrl + "?" + $.param(param)
             };
             return $.ajax(settings);
         }
 
     };
 
-})(window.suppliez = window.suppliez || {});
+})(window.kan = window.kan || {});
 
