@@ -294,14 +294,11 @@
   <li><a href="javascript:void(0);"><span data-bind="text:matid"></span><span class="ui-li-count"  data-bind="text:matqty"></span></a></li>
 </script>
 <script type="text/html" id="routeLine">
-  <li><a href="javascript:void(0);"><b data-bind="text:rtid">R001</b>/<span data-bind="text:rtname"></span><span class="ui-li-count" data-bind="text:rtname"></span></a></li>
+  <li><a href="javascript:void(0);"><b data-bind="text:rtid"></b>/<span data-bind="text:rtname"></span><span class="ui-li-count" data-bind="text:rtname"></span></a></li>
 </script>
 <script type="text/html" id="docLine">
-  <li><a href="javascript:void(0);"><b data-bind="text:name"></b><span class="ui-li-count"><i class="fal fa-fw fa-file-alt"></i></span></a></li>
+  <li><a href="javascript:void(0);" data-bind="click:function(){$root.download($data);}"><b data-bind="text:name"></b><span class="ui-li-count"><i class="fal fa-fw fa-file-alt"></i></span></a></li>
 </script>
 
 </body>
 </html>
-
-restype
-"resid\":\"RE010\",\"restype\":\"PP\"

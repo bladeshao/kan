@@ -7,6 +7,7 @@
         ],
         oAuth2Url: "https://is.eorionsolution.com/oauth2/",
         bpmsUrl:"https://bpms.eorionsolution.com",
+        attachmentUrl: "https://bpms.eorionsolution.com/bpms-upload/",
         interval: 10
     };
 })(window.kan = window.kan || {});
